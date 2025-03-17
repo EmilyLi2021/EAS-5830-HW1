@@ -5,8 +5,6 @@ import json
 def pin_to_ipfs(data):
 	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
 	#YOUR CODE HERE
-	# Convert the dictionary to a JSON string
-	# json_data = json.dumps(data)
 	
 	url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"
 	
