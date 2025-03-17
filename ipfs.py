@@ -6,9 +6,8 @@ def pin_to_ipfs(data):
 	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
 	#YOUR CODE HERE
 	json_data = json.dumps(data)
-	files = {'file': json_data}
 	
-	url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
+	url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"
 	
 	headers = {
 		"pinata_api_key": '32da54258de0a42b7ee8',
@@ -16,7 +15,7 @@ def pin_to_ipfs(data):
 	}
 
 	response = requests.post(url, files=files, headers=headers)
-
+	response = requests.post(url, json=data, headers=headers)
 	if response.status_code == 200:
 		cid = response.json()['Hash']
 	else:
